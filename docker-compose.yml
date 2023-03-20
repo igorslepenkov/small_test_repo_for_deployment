@@ -1,0 +1,25 @@
+services:
+  deployment_test:
+    container_name: deploymentTest
+    build: ./
+    ports:
+      - 4000:4000
+    networks:
+      - deployment_service
+    depends_on:
+      - postgres
+    restart: always
+
+  postgres:
+    container_name: postgresTest
+    image: postgres
+    env_file:
+      - ./.env
+    restart: always
+    networks:
+      - deployment_service
+    ports:
+      - 5432:5432
+
+networks:
+  deployment_service:
