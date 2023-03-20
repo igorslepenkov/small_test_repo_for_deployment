@@ -13,8 +13,6 @@ services:
   postgres:
     container_name: postgresTest
     image: postgres
-    env_file:
-      - ./.env
     restart: always
     networks:
       - deployment_service
